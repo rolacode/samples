@@ -61,9 +61,50 @@ const getUserHandler = async (req, res) => {
 // @route PUT /v1/users/:id
 // @access public
 const updateUserHandler = async (req, res) => {
+  try {
+      const id = req.params.id;
+      if (id > users.length) {
+        res.status(404).json({message: 'user not found'});
+        return;
+      }
+      let { name, gender, age} = req.body;
+      const lowerCaseGender = gender.toLowerCase();
+  
+      if (typeof name !== 'string') {
+        res.status(400).json({message: 'name must be string'});
+        return;
+      }
+  
+      if (typeof gender !== 'string') {
+        res.status(400).json({message: 'gender must be string'});
+        return;
+      } else if (lowerCaseGender !== 'male' && lowerCaseGender !== 'female') {
+        res.status(400).json({message: 'gender must be either male or female'});
+        return;
+      }
+  
+      if (typeof age !== 'number') {
+        res.status(400).json({message: 'age must be number'});
+        return;
+      } else if(age < 15) {
+        res.status(400).json({message: 'age must be 15 years and above'});
+        return;
+      }
+  
+      const user = {
+        id: users.length,
+        name: name,
+        gender: lowerCaseGender,
+        age: age
+      };
 
+      users[id] = user;
+      res.status(200).json(user);
+      return;
+    } catch (error) {
+      res.status(500).json({message: 'error message'});
+    }
 };
-
 
 // @desc DELETE Remove a user
 // @route DELETE /v1/users/:id
