@@ -1,8 +1,7 @@
-const {DataTypes} = require('sequelize');
-const sequelize = require('../db.js');
-const { type } = require('express/lib/response.js');
+const DataTypes = require('sequelize');
+const sequelize = require('../db');
 
-const user = sequelize.define('user', {
+const User = sequelize.define('Users', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -28,6 +27,14 @@ const user = sequelize.define('user', {
       isEmail: true,
     },
   },
+  createdAt: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
+  },
 });
 
-module.exports = user;
+module.exports = User;

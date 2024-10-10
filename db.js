@@ -1,6 +1,6 @@
-const {sequelize} = require('sequelize'); // import sequelize
+const {Sequelize} = require('sequelize'); // import sequelize
 
-const sequelize = new sequelize('sampledb', 'postgres', 'Rotimi05#', {
+const sequelize = new Sequelize('samplesdb', 'postgres', 'Rotimi05#', {
   host: 'localhost',
   port: 5432,
   dialect: 'postgres'

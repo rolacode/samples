@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "Rotimi05#",
-    "database": "sampledb",
+    "database": "samplesdb",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
