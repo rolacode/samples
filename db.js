@@ -1,18 +1,17 @@
-const {Sequelize} = require('sequelize'); // import sequelize
+const { Sequelize } = require("sequelize"); // import sequelize
 
-const sequelize = new Sequelize('samplesdb', 'postgres', 'Rotimi05#', {
-  host: 'localhost',
+const sequelize = new Sequelize("samplesdb", "postgres", "Rotimi05#", {
+  host: "localhost",
   port: 5432,
-  dialect: 'postgres'
+  dialect: "postgres",
 });
-
 
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log('connection has been established successfully');
+    console.log("connection has been established successfully");
   } catch (error) {
-    console.log('unable to connect to the database', error);
+    console.log("unable to connect to the database", error);
   }
 })();
 
